@@ -1,2 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
+lab2/.godot/
+.vs/
+lab2/Images/
+lab2/Fonts

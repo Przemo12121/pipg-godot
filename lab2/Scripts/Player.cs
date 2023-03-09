@@ -16,7 +16,7 @@ public partial class Player : Area2D
             .Disabled = false;
     }
 
-    public void OnBodyEntered(Node2D body)
+    public void OnBodyEntered(PhysicsBody2D body)
     {
         Hide(); // Player disappears after being hit.
 
@@ -36,7 +36,7 @@ public partial class Player : Area2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() 
 	{
-		ScreenSize = GetViewportRect().Size;
+        ScreenSize = GetViewportRect().Size;
 		AnimationSprite = GetNode<AnimatedSprite2D>(Strings.Nodes.AnimationSprite);
 
 		Hide();

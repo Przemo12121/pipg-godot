@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://l2nu3os07dxy"]
+
+[ext_resource type="Script" path="res://Scripts/HUD.cs" id="1_drwti"]
+[ext_resource type="FontFile" uid="uid://c8pv8fooug7bj" path="res://Fonts/Xolonium-Regular.ttf" id="1_pfln6"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_v4ek1"]
+action = &"Start"
+
+[sub_resource type="Shortcut" id="Shortcut_n8nbh"]
+events = [SubResource("InputEventAction_v4ek1")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_drwti")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.5
+offset_right = 22.5
+offset_bottom = 81.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_pfln6")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -81.0
+offset_right = 174.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_pfln6")
+theme_override_font_sizes/font_size = 64
+text = "Dodge the 
+creeps!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 136.0
+offset_right = 89.0
+offset_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_pfln6")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_n8nbh")
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+
+[connection signal="ready" from="." to="." method="_Ready"]
+[connection signal="pressed" from="StartButton" to="." method="OnStartButtonPressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="OnMessageTimerTimeout"]

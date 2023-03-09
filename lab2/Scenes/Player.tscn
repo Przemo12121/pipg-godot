@@ -48,3 +48,4 @@ animation = &"up"
 shape = SubResource("CapsuleShape2D_oqrwg")
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="ready" from="." to="." method="_Ready"]

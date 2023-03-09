@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnsk5xmxl07dh"]
+[gd_scene load_steps=8 format=3 uid="uid://bnsk5xmxl07dh"]
 
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_cxafh"]
 [ext_resource type="PackedScene" uid="uid://bbpgi5s7kvlw4" path="res://Scenes/Mob.tscn" id="2_ri4b6"]
 [ext_resource type="PackedScene" uid="uid://c6b21ulndmtl1" path="res://Scenes/Player.tscn" id="3_f5wsc"]
+[ext_resource type="PackedScene" uid="uid://l2nu3os07dxy" path="res://Scenes/HUD.tscn" id="4_04ayc"]
+[ext_resource type="AudioStream" uid="uid://cqc81lnlxrji2" path="res://Images/dodge_assets/art/House In a Forest Loop.ogg" id="5_jqgm7"]
+[ext_resource type="AudioStream" uid="uid://5o3jxu6c5xpf" path="res://Images/dodge_assets/art/gameover.wav" id="6_cj1hv"]
 
 [sub_resource type="Curve2D" id="Curve2D_0sgsx"]
 _data = {
@@ -13,6 +16,11 @@ point_count = 6
 [node name="Main" type="Node"]
 script = ExtResource("1_cxafh")
 MobScene = ExtResource("2_ri4b6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 480.0
+offset_bottom = 720.0
+color = Color(0.811765, 0.564706, 0.898039, 1)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -33,7 +41,17 @@ curve = SubResource("Curve2D_0sgsx")
 
 [node name="Player" parent="." instance=ExtResource("3_f5wsc")]
 
+[node name="HUD" parent="." instance=ExtResource("4_04ayc")]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_jqgm7")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_cj1hv")
+
+[connection signal="ready" from="." to="." method="_Ready"]
 [connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="OnScoreTimerTimeout"]
 [connection signal="timeout" from="StartTimer" to="." method="OnStartTimerTimeout"]
-[connection signal="Hit" from="Player" to="." method="game_over"]
+[connection signal="Hit" from="Player" to="." method="GameOver"]
+[connection signal="StartGame" from="HUD" to="." method="NewGame"]

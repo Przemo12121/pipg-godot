@@ -19,6 +19,14 @@ public class Strings
         public static readonly string StartTimer = "StartTimer";
         public static readonly string MobTimer = "MobTimer";
         public static readonly string ScoreTimer = "ScoreTimer";
+        public static readonly string Message = "Message";
+        public static readonly string MessageTimer = "MessageTimer";
+        public static readonly string StartButton = "StartButton";
+        public static readonly string ScoreLabel = "ScoreLabel";
+        public static readonly string HUD = "HUD";
+        public static readonly string DeathSound = "DeathSound";
+        public static readonly string Music = "Music";
+        public static readonly string MobsPath = "MobPath/MobSpawnLocation";
     }
 
     public static class Animations
@@ -30,6 +38,22 @@ public class Strings
     public static class GodotProperties
     {
         public static readonly string Disabled = "disabled";
-        public static readonly string HorizontalMovement = "walk";
+    }
+
+    public static class Signals
+    {
+        public static readonly string Timeout = "timeout";
+    }
+
+    public static class Messages
+    {
+        public static readonly string GameOver = "Game Over";
+        public static readonly string Title = "Dodge the\nCreeps!";
+        public static readonly string Start = "Get Ready!";
+    }
+
+    public static class Groups
+    {
+        public static readonly string Mobs = "Mobs";
     }
 }
